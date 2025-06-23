@@ -11,20 +11,6 @@ class Player:
   def get_sign(self):
     return self.sign
   
-  def prompt_player_name(self, player):
-    while(True):
-      try:
-        name = input(f"Enter {player}'s name: ").strip().upper()
-
-      except KeyboardInterrupt:
-        print("\nGame interrupted by user. Exiting....")
-        sys.exit()
-
-      if name == "":
-        print("Please enter a valid name..")
-      
-      else: return name
-
 
 class Cell:
   def __init__(self, index):
@@ -169,6 +155,21 @@ class Game:
     return idx
   
 
+def prompt_player_name(player):
+  while(True):
+    try:
+      name = input(f"Enter {player}'s name: ").strip().upper()
+
+    except KeyboardInterrupt:
+      print("\nGame interrupted by user. Exiting....")
+      sys.exit()
+
+    if name == "":
+      print("Please enter a valid name..")
+    
+    else: return name
+
+
 def main():
 
   try:
@@ -180,8 +181,8 @@ def main():
   if(key_pressed == "q"):
     sys.exit()
   
-  name1 = Player.prompt_player_name("Player_1")
-  name2 = Player.prompt_player_name("Player_2")
+  name1 = prompt_player_name("Player_1")
+  name2 = prompt_player_name("Player_2")
   print()
 
   player1 = Player(name1, "X")
